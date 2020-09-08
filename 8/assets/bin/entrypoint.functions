@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function process_templates() {
+
+    gomplate -f "/assets/templates/drupal.settings.local.php.tmpl" -o "/var/www/html/web/sites/default/settings.local.php"
+    gomplate -f "/assets/templates/sites.php.tmpl" -o "/var/www/html/web/sites/sites.php"
+    gomplate -f "/assets/templates/default.settings.php.tpl" -o "/var/www/html/web/sites/default/settings.php"
+    gomplate -f "/assets/templates/trusted_host_patterns.php.tmpl" -o "/var/www/html/web/sites/default/trusted_host_patterns.php"
+    gomplate -f "/assets/templates/alias.site.yml.tmpl" -o "/etc/drush/sites/alias.site.yml"
+
+}

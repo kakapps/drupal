@@ -1,0 +1,11 @@
+dev:
+  root: {{ getenv "DRUPAL_ROOT" "/var/www/html" }}
+  uri: dev-{{ getenv "PROJECT_NAME" "drupal" }}.localhost
+ci:
+  host: ci-{{ getenv "PROJECT_NAME" "drupal" }}.localhost
+  options: {  }
+  root: {{ getenv "DRUPAL_ROOT" "/var/www/html" }}
+  uri: ci-{{ getenv "PROJECT_NAME" "drupal" }}.localhost
+  user: root
+  ssh:
+    options: '-i ~/.ssh/{{ getenv "PROJECT_NAME" "drupal" }}.pem -p 22122'

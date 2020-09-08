@@ -1,0 +1,7 @@
+<?php
+
+$site = '{{ getenv "DRUPAL_SITE" "default" }}';
+
+{{ if getenv "DRUPAL_HOSTS" }}{{ range jsonArray (getenv "DRUPAL_HOSTS") }}
+$sites['{{ . }}'] = $site;
+{{ end }}{{ end }}
