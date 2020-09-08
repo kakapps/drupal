@@ -1,4 +1,4 @@
-ARG BASEPHP=7.2.32
+ARG BASEPHP=7.4
 
 FROM php:${BASEPHP}-fpm-buster as base
 
