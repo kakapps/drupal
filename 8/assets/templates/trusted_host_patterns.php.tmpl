@@ -1,5 +1,5 @@
 <?php
 $settings['trusted_host_patterns'] = array(
-  '^(dev-|ci-)?{{ getenv "PROJECT_NAME" "drupal" }}.localhost$'
+  '^{{ getenv "PROJECT_NAME" "drupal" }}.{{ getenv "PROJECT_BASE_DOMAIN" "example.local" }}$'
 );
 ?>

@@ -65,11 +65,17 @@ FROM base as drupalbase
 ## Templating binary
 COPY --from=hairyhenderson/gomplate:v3.7.0-slim /gomplate /bin/gomplate
 
+RUN curl -so /usr/local/bin/php-fpm-healthcheck \
+	https://raw.githubusercontent.com/renatomefi/php-fpm-healthcheck/master/php-fpm-healthcheck &&\
+	chmod +x /usr/local/bin/php-fpm-healthcheck &&\
+	echo "pm.status_path = /status" >> /usr/local/etc/php-fpm.d/zz-docker.conf
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     git \
     vim \
     rsync \
+	libfcgi-bin \
     openssh-client && \
     apt-get clean -y && \
     apt-get autoclean -y && \
